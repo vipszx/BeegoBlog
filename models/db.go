@@ -1,9 +1,9 @@
 package models
 
 import (
+	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego"
 	"fmt"
-	"github.com/astaxie/beego/orm"
 )
 
 func init() {
@@ -23,7 +23,7 @@ func RegisterDB() {
 	dbUser := beego.AppConfig.String("dbUser")
 	dbPwd := beego.AppConfig.String("dbPwd")
 	dbName := beego.AppConfig.String("dbName")
-	dbLink := fmt.Sprintf("%s:%s@/%s?charset=utf8&loc=Local", dbUser, dbPwd, dbName)
+	dbLink := fmt.Sprintf("%s:%s@/%s?charset=utf8&loc=Local", dbUser, dbPwd,dbName)
 
 	//注册默认数据库
 	orm.RegisterDataBase("default", "mysql", dbLink)

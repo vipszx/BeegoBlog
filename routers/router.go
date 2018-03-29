@@ -22,8 +22,12 @@ func RegisterRouter(){
 	//文章路由
 	beego.Router("/article/create", &controllers.ArticleController{},"get:Create")
 	beego.Router("/article", &controllers.ArticleController{},"post:Store")
-	//beego.Router("/category/:id", &controllers.ArticleController{},"get:Show")
-	//beego.Router("/category/edit/:id", &controllers.ArticleController{},"get:Edit")
-	//beego.Router("/category/:id", &controllers.ArticleController{},"put:Update")
-	//beego.Router("/category/delete/:id", &controllers.ArticleController{},"get:Delete")
+	beego.Router("/article/:id", &controllers.ArticleController{},"get:Show")
+	//beego.Router("/article/edit/:id", &controllers.ArticleController{},"get:Edit")
+	//beego.Router("/article/:id", &controllers.ArticleController{},"put:Update")
+	beego.Router("/article/delete/:id", &controllers.ArticleController{},"get:Delete")
+
+	//评论路由
+	beego.Router("/comment",&controllers.CommentController{},"post:Store")
+	beego.Router("/comment/delete/:id",&controllers.CommentController{},"get:Delete")
 }

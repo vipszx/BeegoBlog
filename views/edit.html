@@ -8,23 +8,25 @@
                 <tr>
                     <td colspan="2">
                         <div class="block-title"><H5><IMG src="/static/images/modify.gif" WIDTH="20" HEIGHT="23"
-                                                          BORDER="0" ALT="" align="absmiddle"> 发表新的日志</H5></div>
+                                                          BORDER="0" ALT="" align="absmiddle"> 修改日志</H5></div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <form method="post" action="/article">
+                        <form method="put" action="/article">
                         {{.XsrfData}}
                             <table cellpadding=3 cellspacing=3 style="font-size:14px">
                                 <tr>
                                     <td class="tRight tTop" width="35%">昵称：</td>
                                     <td class="tLeft"><input TYPE="text" class="huge text" check='Require'
-                                                             warning="昵称不能为空" name="user_name" id="user_name"></td>
+                                                             warning="昵称不能为空" name="user_name" id="user_name"
+                                                             value="{{.ThisArticle.UserName}}"></td>
                                 </tr>
                                 <tr>
                                     <td class="tRight tTop" width="35%">标题：</td>
                                     <td class="tLeft"><input TYPE="text" class="huge text" check='Require'
-                                                             warning="标题不能为空" name="title" id="title"></td>
+                                                             warning="标题不能为空" name="title"
+                                                             value="{{.ThisArticle.Title}}" id="title"></td>
                                 </tr>
 
                                 <tr>
@@ -33,7 +35,8 @@
                                         <select name="category_id">
                                             <volist name="category_id" id="category">
                                             {{range .Categories}}
-                                                <option value="{{.Id}}">
+                                                <option value="{{.Id}}" {{if .ThisArticle.Category.Id eq .Id}}
+                                                        selected {{end}}>
                                                 {{.Title}}
                                                 </option>
                                             {{end}}
@@ -44,8 +47,10 @@
                                 </tr>
                                 <tr>
                                     <td class="tRight tTop">日志：</td>
-                                    <td class="tLeft"><textarea name="content" id="textContent" cols="95"
-                                                                rows="12"></textarea></td>
+                                    <td class="tLeft">
+                                        <textarea name="content" id="textContent" cols="95"
+                                                  rows="12">{{.ThisArticle.Content}}</textarea>
+                                    </td>
                                 </tr>
 
                                 <tr>
