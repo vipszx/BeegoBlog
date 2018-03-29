@@ -1,0 +1,126 @@
+<!--中间部分-->
+<div id="mainWrapper">
+    <div id="content" class="content">
+        <div id="innerContent">
+            <div class="announce text" style="border:1px solid silver;padding:5px;font-size:14px;">
+                <h4 style="color:#FF3300"><img src="/static/images/wav.gif" width="18" height="18" border="0" alt=""
+                                               align="absmiddle"> 简单的BLOG示例</h4>
+                本示例Blog包括日志的新增、修改、列表、统计、评论和删除等功能,可以作为入门的示例。<P>请按照下面步骤操作，增加分类、添加日志、增加评论。
+            </div>
+
+            <div class="articles">
+                <volist name="articles" id="article">
+                {{range .Articles}}
+                    <div class="textbox-title">
+                        <h4>
+                            <img src="/static/images/icon_point2.gif" width="13" height="13" border="0" alt=""
+                                 align="absmiddle">
+                            <a href="">{{.Title}}</a>
+                        </h4>
+
+                        <div class="textbox-label">
+                            [ {{.Created}} | <a href="#">{{.Category}}</a>]
+                        </div>
+                    </div>
+                    <div class="textbox-content">
+                        {{.Content}}
+                    </div>
+                    <div class="textbox-bottom">
+                        [ 管理：<a href="">编辑</a>&emsp;<a href="">删除</a> ]
+                        | <a href="#">评论: </a>评论数
+                        | 浏览量: {{.View}}
+                    </div>
+                {{end}}
+                </volist>
+            </div>
+            <center>
+                <button class="more">加载更多</button>
+            </center>
+
+        </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+        <div id="innerSidebar">
+            <div id="panelSearch" class="panel">
+                <div id="panelStats" class="panel">
+                    <h5>统计数据</h5>
+                    <div class="panel-content">
+                        栏目总数：<span style="color:#6699FF">{{.CategoryCount}}</span><br/>
+                        日志总数：<span style="color:#CC9933">{{.ArticleCount}}</span><br/>
+                        评论总数：<span style="color:#FF9900">{{.CommentCount}}</span><br/>
+                    </div>
+                </div>
+                <h5>日志分类 </h5>
+
+                <div class="panel-content">
+                    <ul id="category">
+                        <li>
+                            <form action="/category" method="post">
+                            {{ .XsrfData }}
+                                <div class="fLeft">
+                                    <input type="text" id="categoryName" class="text" name="title">
+                                </div>
+                                <input type="submit" value="增 加" class="submit hMargin small">
+                                <br style="clear:both;float:auto"/>
+                            </form>
+                        </li>
+                        <volist name="category" id="vo">
+                        {{range .Categories}}
+                            <li>
+                                <img src="/static/images/folder.gif" width="18" height="18" border="0" alt=""
+                                     align="absmiddle">
+                                <a href="javascript:void(0)">{{.Title}}</a>
+                                <a href="/category/delete/{{.Id}}">
+                                    <img src="/static/images/del.gif" style="cursor:pointer" width="20" height="20"
+                                         border="0" alt="">
+                                </a>
+                            </li>
+                        {{end}}
+                            <!--
+                            <li>
+                                <img src="/static/images/folder.gif" width="18" height="18" border="0" alt="" align="absmiddle">
+                                <a href="#">娱乐</a>
+                                <span>(33)</span>
+                                <img src="/static/images/del.gif" style="cursor:pointer" width="20" height="20" border="0" alt="">
+                            </li>
+                            -->
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div id="panelSearch" class="panel">
+                <h5>最新日志</h5>
+
+                <div class="panel-content">
+                    <ul>
+                        <li>
+                            <img src="/static/images/icon_ctb.gif" width="11" height="11" border="0" alt=""
+                                 align="absmiddle"/>
+                            <a href="#" title="学GO真有趣">学GO真有趣</a>
+                            <sup style="color:silver;font-size:12px">
+                                [<span style="color:#3366CC">20<!-- 阅读数 --></span> |<span style="color:#FF6600"> 15
+                                <!-- 评论数 --></span>]
+                            </sup>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="panelSearch" class="panel">
+                <h5>最新评论</h5>
+
+                <div class="panel-content">
+                    <ul>
+                        <volist id="vo" name="lastComments">
+                            <li>
+                                <img src="/static/images/Comment.gif" width="9" height="9" border="0" alt=""
+                                     align="absmiddle">
+                                <a href="#"> <span style="color:#3366CC">Levitate</span></a>：
+                                <a href="#" title="">您的博文写得好好呢！</a>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

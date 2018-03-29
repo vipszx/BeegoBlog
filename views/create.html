@@ -1,0 +1,72 @@
+<!--中间部分-->
+<div id="mainWrapper">
+    <div id="content" class="content">
+        <div id="innerContent">
+
+            <div class="commentbox">
+                <table cellpadding=3 cellspacing=3 width="680px">
+                    <tr>
+                        <td colspan="2">
+                            <div class="block-title"><H5><IMG src="/static/images/modify.gif" WIDTH="20" HEIGHT="23"
+                                                              BORDER="0" ALT="" align="absmiddle"> 发表新的日志</H5></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <form method="post"  action="/article" >
+                                {{.XsrfData}}
+                                <table cellpadding=3 cellspacing=3 style="font-size:14px">
+                                    <tr>
+                                        <td class="tRight tTop" width="35%">昵称：</td>
+                                        <td class="tLeft"><input TYPE="text" class="huge text" check='Require'
+                                                                 warning="昵称不能为空" name="user_name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tRight tTop" width="35%">标题：</td>
+                                        <td class="tLeft"><input TYPE="text" class="huge text" check='Require'
+                                                                 warning="标题不能为空" name="title"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="tRight tTop">类别：</td>
+                                        <td class="tLeft">
+                                            <select name="category_id">
+                                                <volist name="category_id" id="category">
+                                                    {{range .Categories}}
+                                                    <option value="{{.Id}}">
+                                                       {{.Title}}
+                                                    </option>
+                                                    {{end}}
+                                                </volist>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tRight tTop">日志：</td>
+                                        <td class="tLeft"><textarea name="content" id="textContent" cols="95"
+                                                                    rows="12"></textarea></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td class="center">
+                                            <div style="width:85%;color:gray">
+                                                <div class="fLeft hMargin"><input TYPE="reset" class="submit small"
+                                                                                  value="重 置"></div>
+                                                <div class="fLeft hMargin">
+                                                    <input TYPE="submit" id="submit" value="发表日志" class="submit small">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

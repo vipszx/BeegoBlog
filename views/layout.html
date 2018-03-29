@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>博客系统开发</title>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .textbox-bottom a.active {
+            color: #FF3300;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <div id="innerHeader">
+        <div id="blogLogo"></div>
+        <div class="blog-header">
+            <div class="blog-title"><img src="/static/images/logo.png" style="border:1px solid gray" BORDER="0" ALT=""
+                                         align="absmiddle">
+                <a href="">iLevitate</a>
+            </div>
+            <div class="blog-desc">博客系统开发</div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="/">日志首页</a></li>
+                <li><a href="/article/create">撰写日志</a></li>
+                <li><a href="javascript:void(0)">官方网站</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{{.LayoutContent}}
+
+<!-- 版权信息区域 -->
+<div id="footer" class="footer">
+    <div id="innerFooter">Powered by iLevitate | <a target="_blank" href="javascript:void(0)">iLevitate</a></div>
+</div>
+
+<script src="/static/js/jquery.min.js"></script>
+</body>
+</html>
