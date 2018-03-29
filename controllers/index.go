@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"BeegoDemo/models"
+	"BeegoBlog/models"
 	"html/template"
 )
 

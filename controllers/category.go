@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"BeegoDemo/models"
+	"BeegoBlog/models"
 	"time"
 	"log"
 )
