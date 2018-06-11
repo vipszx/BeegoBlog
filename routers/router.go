@@ -27,6 +27,10 @@ func RegisterRouter(){
 	beego.Router("/article/:id", &controllers.ArticleController{},"post:Update")
 	beego.Router("/article/delete/:id", &controllers.ArticleController{},"get:Delete")
 
+	//用户路由
+	beego.Router("/user/login", &controllers.UserController{},"get:Index")
+	beego.Router("/user/login", &controllers.UserController{},"post:Login")
+
 	//评论路由
 	beego.Router("/comment",&controllers.CommentController{},"post:Store")
 	beego.Router("/comment/delete/:id",&controllers.CommentController{},"get:Delete")

@@ -7,12 +7,13 @@ import (
 )
 
 type User struct {
-	Id      int64
-	Name    string     `orm:"unique"`
-	Email   string     `orm:"unique"`
-	Created time.Time
-	Article []*Article `orm:"reverse(many)"`
-	Comment []*Comment `orm:"reverse(many)"`
+	Id       int64
+	UserName string `orm:"unique"`
+	Email    string `orm:"unique"`
+	Password string
+	Created  time.Time
+	//Article  []*Article `orm:"reverse(many)"`
+	//Comment  []*Comment `orm:"reverse(many)"`
 }
 
 func init() {
@@ -30,6 +31,15 @@ func (this *User) GetUsers() (result []User) {
 	return
 }
 
+func (this *User) GetUserByUserName(username string) (user User) {
+	user = User{UserName: username}
+	o := orm.NewOrm()
+	err := o.Read(&user, "UserName")
+	if err != nil {
+		log.Println("查询用户出错：" + err.Error())
+	}
+	return
+}
 func (this *User) Insert(query *User) error {
 	o := orm.NewOrm()
 	o.Using("default")
@@ -57,7 +67,7 @@ func (this *User) Delete(id int64) error {
 	o := orm.NewOrm()
 	o.Using("default")
 
-    this.Id = id
+	this.Id = id
 	_, err := o.Delete(this)
 	if err != nil {
 		log.Println("删除用户出错:" + err.Error())

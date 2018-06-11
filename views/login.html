@@ -1,0 +1,7 @@
+<form action="/user/login" method="post">
+{{.XsrfData}}
+    账号<input type="text" name="user_name">
+    密码<input type="text" name="password">
+    <input type="submit" value="提交">
+</form>
+{{.flash.error}}

@@ -11,7 +11,7 @@ func init() {
 	orm.RegisterModel(new(Category))
 	orm.RegisterModel(new(Article))
 	orm.RegisterModel(new(Comment))
-	//orm.RegisterModel(new(User))
+	orm.RegisterModel(new(User))
 }
 
 //注册数据库
