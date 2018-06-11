@@ -23,8 +23,7 @@
             <a href="#reply">我有话要说</a></div>
         <div class="textbox-urls" align="right"></div>
         <div class="no-comment-box">
-        {{/*[ 管理：<a href="/article/edit/{{.Article.Id}}" target="_blank">编辑日志</a> <a href="#">删除日志</a> ]*/}}
-            [ 管理：<a href="/article/delete/{{.Article.Id}}">删除日志</a> ]
+            [ 管理：<a href="/article/edit/{{.Article.Id}}" target="_blank">编辑日志</a> <a href="/article/delete/{{.Article.Id}}">删除日志</a> ]
         </div>
         <div id="comments">
             <div class="commentbox">
@@ -49,7 +48,7 @@
                     <input type="hidden" name="article_id" value="{{.Article.Id}}">
                     <tr>
                         <td class="tRight tTop"></td>
-                        <td class="tLeft">用户名：<input type="text" name="username" id="username" class="text"></td>
+                        <td class="tLeft">用户名：<input type="text" name="user_name" id="username" class="text"></td>
                     </tr>
 
                     <tr>

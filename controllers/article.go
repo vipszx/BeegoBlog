@@ -103,7 +103,27 @@ func (c *ArticleController) Edit(){
 		log.Println("查询文章出错:" + err.Error())
 	}
 	c.Data["ThisArticle"] = article
-
+	c.Data["XsrfData"] = template.HTML(c.XSRFFormHTML())
 	c.Layout = "layout.html"
 	c.TplName = "edit.html"
 }
+
+func (c *ArticleController) Update(){
+	var query models.Article
+	query.Title = c.GetString("title")
+	query.UserName = c.GetString("user_name")
+	query.Content = c.GetString("content")
+	query.Created = time.Now()
+	categoryId, _ := c.GetInt64("category_id")
+	query.Category = &models.Category{
+		Id: categoryId,
+	}
+
+	err := query.Update(&query)
+	if err != nil {
+		log.Println("新增文章出错：" + err.Error())
+	}
+	id := strconv.Itoa(int(query.Id))
+	c.Ctx.Redirect(302, "/article/"+id)
+}
+

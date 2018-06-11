@@ -62,7 +62,7 @@ func (this *Article) GetAll() (result []Article) {
 	return result
 }
 
-func (this *Article) Update(query *Category) error {
+func (this *Article) Update(query *Article) error {
 	o := orm.NewOrm()
 	o.Using("default")
 

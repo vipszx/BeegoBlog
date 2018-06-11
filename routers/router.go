@@ -23,8 +23,8 @@ func RegisterRouter(){
 	beego.Router("/article/create", &controllers.ArticleController{},"get:Create")
 	beego.Router("/article", &controllers.ArticleController{},"post:Store")
 	beego.Router("/article/:id", &controllers.ArticleController{},"get:Show")
-	//beego.Router("/article/edit/:id", &controllers.ArticleController{},"get:Edit")
-	//beego.Router("/article/:id", &controllers.ArticleController{},"put:Update")
+	beego.Router("/article/edit/:id", &controllers.ArticleController{},"get:Edit")
+	beego.Router("/article/:id", &controllers.ArticleController{},"post:Update")
 	beego.Router("/article/delete/:id", &controllers.ArticleController{},"get:Delete")
 
 	//评论路由

@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <form method="put" action="/article">
+                        <form method="post" action="/article">
                         {{.XsrfData}}
                             <table cellpadding=3 cellspacing=3 style="font-size:14px">
                                 <tr>
@@ -35,7 +35,7 @@
                                         <select name="category_id">
                                             <volist name="category_id" id="category">
                                             {{range .Categories}}
-                                                <option value="{{.Id}}" {{if .ThisArticle.Category.Id eq .Id}}
+                                                <option value="{{.Id}}" {{if eq $.ThisArticle.Category.Id .Id}}
                                                         selected {{end}}>
                                                 {{.Title}}
                                                 </option>
@@ -60,7 +60,8 @@
                                             <div class="fLeft hMargin"><input TYPE="reset" class="submit small"
                                                                               value="重 置"></div>
                                             <div class="fLeft hMargin">
-                                                <input TYPE="submit" id="CreateArticle" value="发表日志" class="submit small">
+                                                <input TYPE="submit" id="CreateArticle" value="发表日志"
+                                                       class="submit small">
                                             </div>
                                         </div>
                                     </td>
